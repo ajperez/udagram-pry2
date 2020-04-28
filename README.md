@@ -21,8 +21,13 @@ __./delete-udagram.sh__ shell script to delete infrastructure.
 ### Files description:
 
 __DiagramaProyecto2.jpg__ Project Diagram
+
 __red.yml__ template to generate Stack Network __PRY2-Red__
+
 __servidores.yml__ template to generate Stack Servers: __PRY-Servidor__
+
 __crear-stack.sh__ shell script to create a stack
+
 __borrar-stack.sh__ shell script to delete a stack
+
 
