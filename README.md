@@ -1,5 +1,5 @@
 # udagram-pry2
-##Proyecto 2 - Project 2. Cloud Devops Engineer Nanodegree
+## Proyecto 2 - Project 2. Cloud Devops Engineer Nanodegree
 
 __Antonio J. Pérez Montilla__
 
@@ -17,4 +17,12 @@ The second part is to interpret the instructions as well as your own diagram and
 __./create-udagram.sh__ shell script to create two stacks: Stack Network: __PRY2-Red__ / Stack Servers: __PRY2-Servidor__
 
 __./delete-udagram.sh__ shell script to delete infrastructure.
+
+### Files description:
+
+__DiagramaProyecto2.jpg__ Project Diagram
+__red.yml__ template to generate Stack Network __PRY2-Red__
+__servidores.yml__ template to generate Stack Servers: __PRY-Servidor__
+__crear-stack.sh__ shell script to create a stack
+__borrar-stack.sh__ shell script to delete a stack
 
