@@ -55,6 +55,37 @@ Resources:
           FromPort: 0
           ToPort: 65535
           CidrIp: 0.0.0.0/0
+  
+  UdacityS3ReadOnlyEC2:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: UdacityS3ReadOnlyEC2
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service:
+                - "ec2.amazonaws.com"
+            Action:
+              - "sts:AssumeRole"
+      Policies:
+        - PolicyName: "S3ReadOnlyAccess"
+          PolicyDocument: 
+            Version: "2012-10-17"
+            Statement:
+              - Effect: "Allow"
+                Action:
+                  - "s3:GetObject"
+                Resource: "*"
+
+  InstanceProfileLaunchConf:
+    Type: AWS::IAM::InstanceProfile
+    Properties: 
+      Roles:
+        - !Ref UdacityS3ReadOnlyEC2
+    DependsOn: UdacityS3ReadOnlyEC2
+  
   WebAppLaunchConfig:
     Type: AWS::AutoScaling::LaunchConfiguration
     Properties:
@@ -69,6 +100,7 @@ Resources:
           # aws s3 cp s3://udacity-demo-1/udacity.zip .
           # unzip -o udacity.zip
       ImageId: ami-005bdb005fb00e791
+      IamInstanceProfile: !Ref InstanceProfileLaunchConf
       SecurityGroups:
       - Ref: WebServerSecurityGroup
       InstanceType: t3.medium
